@@ -1,1 +1,1 @@
-# MecicalChat
+# MedicalChat
