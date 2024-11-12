@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="MedicalChat.app.controlador.Inicio">
+
+    <HBox
+          style="-fx-background-color: #101e5a; -fx-min-height: 96.0" alignment="CENTER_RIGHT">
+        <ComboBox fx:id="paciente" style="-fx-background-color: #f7f8f9" minHeight="40.0" onAction="#obtenerAccionPaciente" prefWidth="150.0" promptText="SOY PACIENTE">
+            <HBox.margin>
+                <Insets left="24.0" right="24.0" />
+            </HBox.margin></ComboBox>
+        <ComboBox fx:id="medico" style="-fx-background-color: #f7f8f9" minHeight="40.0" onAction="#obtenerAccionMedico" prefWidth="150.0" promptText="SOY MÉDICO">
+            <HBox.margin>
+                <Insets left="24.0" right="24.0" />
+            </HBox.margin></ComboBox>
+    </HBox>
+</VBox>
