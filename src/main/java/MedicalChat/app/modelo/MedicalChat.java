@@ -24,6 +24,7 @@ public class MedicalChat implements ServiciosEmpresa {
         Paciente paciente;
         try {
             paciente = new Paciente(nombreCompleto, cedula, numeroTelefono, correoEmail, password);
+            pacientes.add(paciente);
         }catch (Exception e){
             throw new Exception("No se puede crear un nuevo paciente");
         }
@@ -56,6 +57,7 @@ public class MedicalChat implements ServiciosEmpresa {
         Medico medico;
         try {
             medico = new Medico(nombreCompleto, cedula, numeroTelefono, correoEmail, password);
+            medicos.add(medico);
         }catch (Exception e){
             throw new Exception("No se puede crear un nuevo paciente");
         }
