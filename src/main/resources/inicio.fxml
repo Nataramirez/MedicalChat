@@ -9,7 +9,7 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="MedicalChat.app.controlador.Inicio">
+      fx:controller="MedicalChat.app.controlador.InicioControlador">
 
     <HBox
           style="-fx-background-color: #101e5a; -fx-min-height: 96.0" alignment="CENTER_RIGHT">

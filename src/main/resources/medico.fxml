@@ -8,6 +8,6 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="MedicalChat.app.controlador.Medico">
+            fx:controller="MedicalChat.app.controlador.MedicoControlador">
 
 </VBox>
