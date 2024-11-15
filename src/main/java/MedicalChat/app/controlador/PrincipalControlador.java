@@ -16,10 +16,9 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import lombok.Getter;
 
+@Getter
 public class PrincipalControlador implements ServiciosEmpresa {
-    @Getter
     private final MedicalChat medicalChat;
-    @Getter
     private final Sesion sesion;
     public static PrincipalControlador INSTANCIA;
 
@@ -50,8 +49,10 @@ public class PrincipalControlador implements ServiciosEmpresa {
             stage.setResizable(false);
             stage.setTitle(tituloVentana);
 
-            if(nombreArchivoFxml.equals(TipoPantalla.MEDICO.getRuta()) || nombreArchivoFxml.equals(TipoPantalla.PACIENTE.getRuta())){
-                stage.setMaximized(true);
+            if(nombreArchivoFxml.equals(TipoPantalla.MEDICO.getRuta()) ||
+                    nombreArchivoFxml.equals(TipoPantalla.PACIENTE.getRuta()) ||
+                    nombreArchivoFxml.equals(TipoPantalla.INICIO.getRuta())){
+               stage.setMaximized(true);
             }
 
             // Mostrar la nueva ventana

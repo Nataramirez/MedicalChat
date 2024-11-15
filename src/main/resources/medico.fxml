@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="MedicalChat.app.controlador.MedicoControlador">
+<VBox xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MedicalChat.app.controlador.MedicoControlador">
+    <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #101e5a; -fx-min-height: 96.0">
+        <Label fx:id="nombreUsuario" textFill="#f7f8f9">
+         <HBox.margin>
+            <Insets right="24.0" />
+         </HBox.margin>
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font></Label>
+        <Button id="btnCerrarSesion" minHeight="32.0" minWidth="130.0" onAction="#cerrarSesion" style="-fx-background-color: #f7f8f9; -fx-text-fill: black" text="Cerrar sesión">
+            <HBox.margin>
+                <Insets bottom="24.0" right="24.0" top="24.0" />
+            </HBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+    </HBox>
 
 </VBox>

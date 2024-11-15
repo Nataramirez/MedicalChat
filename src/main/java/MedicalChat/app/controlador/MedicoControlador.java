@@ -1,16 +1,44 @@
 package MedicalChat.app.controlador;
 
 import MedicalChat.app.controlador.observador.Observable;
+import MedicalChat.app.enums.TipoPantalla;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
-public class MedicoControlador {
+import java.net.URL;
+import java.util.Observer;
+import java.util.ResourceBundle;
+
+public class MedicoControlador implements Observable, Initializable {
     private final PrincipalControlador principal;
-    private  Observable observable;
+    private Observable observable;
+    @FXML
+    public Label nombreUsuario;
 
     public MedicoControlador() {
         principal = PrincipalControlador.getInstancia();
+        System.out.println(principal.getSesion().getMedico().getNombre());
     }
 
     public void inicializarObservable(Observable observable) {
         this.observable = observable;
+    }
+
+    @Override
+    public void notificar() {}
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        nombreUsuario.setText("Hola " + principal.getSesion().getMedico().getNombre());
+    }
+
+    public void cerrarSesion() {
+        principal.getSesion().cerrarSesion();
+        FXMLLoader loader = principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
+        InicioControlador controlador = loader.getController();
+        controlador.inicializarObservable(this);
     }
 }
