@@ -1,5 +1,6 @@
 package MedicalChat.app.modelo;
 
+import MedicalChat.app.enums.TipoRegistro;
 import MedicalChat.app.servicio.ServiciosEmpresa;
 
 import java.util.ArrayList;
@@ -7,14 +8,17 @@ import java.util.ArrayList;
 public class MedicalChat implements ServiciosEmpresa {
     private ArrayList<Paciente> pacientes;
     private ArrayList<Medico> medicos;
+    private Sesion sesion;
 
     public MedicalChat() {
         pacientes = new ArrayList<>();
         medicos = new ArrayList<>();
+        sesion = Sesion.getInstancia();
     }
 
     @Override
     public Paciente agregarPaciente(String nombreCompleto, String cedula, String numeroTelefono, String correoEmail, String password) throws Exception {
+
         validarCampos(nombreCompleto, cedula, correoEmail, password);
 
         if(obtenerPaciente(cedula) != null){
@@ -42,7 +46,7 @@ public class MedicalChat implements ServiciosEmpresa {
             }
             return null;
         }catch (Exception e){
-            throw new Exception("No se puede buscar Paciente");
+            throw new Exception("No se puede buscar el paciente");
         }
     }
 
@@ -77,6 +81,32 @@ public class MedicalChat implements ServiciosEmpresa {
         }catch (Exception e){
             throw new Exception("No se puede buscar Médico");
         }
+    }
+
+    @Override
+    public boolean iniciarSesion(String cedula, String password, TipoRegistro tipo) throws Exception {
+        Object usuario = tipo.equals(TipoRegistro.MEDICO) ? obtenerMedico(cedula) : obtenerPaciente(cedula);
+
+        if (usuario == null || !esContrasenaValida(usuario, password)) {
+            return false;
+        }
+
+        if (tipo.equals(TipoRegistro.MEDICO)) {
+            sesion.setMedico((Medico) usuario);
+        } else {
+            sesion.setPaciente((Paciente) usuario);
+        }
+
+        return true;
+    }
+
+    private boolean esContrasenaValida(Object usuario, String password) {
+        if (usuario instanceof Medico) {
+            return ((Medico) usuario).getContrasena().equals(password);
+        } else if (usuario instanceof Paciente) {
+            return ((Paciente) usuario).getContrasena().equals(password);
+        }
+        return false;
     }
 
     private void validarCampos(String nombreCompleto, String cedula, String correoEmail, String password) throws Exception {

@@ -34,7 +34,8 @@ public class InicioControlador implements Initializable, Observable {
     public void obtenerAccionPaciente() {
         System.out.println(paciente.getValue());
         if(paciente.getValue().equals(TipoAccionesInicio.Ingresar)){
-            System.out.println("iniciar sesion Paciente");
+            principal.getSesion().setTipoRegistro(TipoRegistro.PACIENTE);
+            principal.navegarVentana(TipoPantalla.INICIO_SESION.getRuta(), TipoPantalla.INICIO_SESION.getNombre());
         }
 
         if (paciente.getValue().equals(TipoAccionesInicio.Registrarse)) {
@@ -49,7 +50,8 @@ public class InicioControlador implements Initializable, Observable {
     public void obtenerAccionMedico(ActionEvent actionEvent) {
         System.out.println(medico.getValue());
         if(medico.getValue().equals(TipoAccionesInicio.Ingresar)){
-            System.out.println("iniciar sesion médico");
+            principal.getSesion().setTipoRegistro(TipoRegistro.MEDICO);
+            principal.navegarVentana(TipoPantalla.INICIO_SESION.getRuta(), TipoPantalla.INICIO_SESION.getNombre());
         }
 
         if (medico.getValue().equals(TipoAccionesInicio.Registrarse)) {
