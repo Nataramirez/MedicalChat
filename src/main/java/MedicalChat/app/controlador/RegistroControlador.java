@@ -50,13 +50,6 @@ public class RegistroControlador implements Observable {
             }
 
             try {
-                Integer.parseInt(telefono.getText());
-            } catch (NumberFormatException e) {
-                telefono.setText("");
-                principal.mostrarAlerta("El campo teléfono debe ser numérico", Alert.AlertType.WARNING);
-            }
-
-            try {
                 if(principal.getSesion().getTipoRegistro().equals(TipoRegistro.PACIENTE)){
                     Paciente paciente = principal.obtenerPaciente(cedula.getText());
                     if(paciente == null) {
@@ -104,24 +97,28 @@ public class RegistroControlador implements Observable {
     private void validarIngreso(ButtonType respuesta, Paciente paciente) {
         if (respuesta == ButtonType.OK) {
             principal.getSesion().setPaciente(paciente);
+            principal.cerrarVentana(nombre);
             FXMLLoader loader = principal.navegarVentana(TipoPantalla.PACIENTE.getRuta(), TipoPantalla.PACIENTE.getNombre());
             PacienteControlador controlador = loader.getController();
             controlador.inicializarObservable(this);
-            principal.cerrarVentana(nombre);
         }else {
+            principal.getSesion().cerrarSesion();
             principal.cerrarVentana(nombre);
+            principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
         }
     }
 
     private void validarIngreso(ButtonType respuesta, Medico medico) {
         if (respuesta == ButtonType.OK) {
             principal.getSesion().setMedico(medico);
+            principal.cerrarVentana(nombre);
             FXMLLoader loader = principal.navegarVentana(TipoPantalla.MEDICO.getRuta(), TipoPantalla.MEDICO.getNombre());
             MedicoControlador controlador = loader.getController();
             controlador.inicializarObservable(this);
-            principal.cerrarVentana(nombre);
         }else {
+            principal.getSesion().cerrarSesion();
             principal.cerrarVentana(nombre);
+            principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
         }
     }
 }

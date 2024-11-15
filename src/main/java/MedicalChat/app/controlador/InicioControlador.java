@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class InicioControlador implements Initializable, Observable {
     private final PrincipalControlador principal;
+    private Observable observable;
     @FXML
     public ComboBox paciente;
     @FXML
@@ -24,6 +25,11 @@ public class InicioControlador implements Initializable, Observable {
     public InicioControlador() {
         principal = PrincipalControlador.getInstancia();
     }
+
+    public void inicializarObservable(Observable observable) {
+        this.observable = observable;
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
