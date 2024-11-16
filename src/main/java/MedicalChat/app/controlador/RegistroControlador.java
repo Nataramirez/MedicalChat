@@ -100,11 +100,10 @@ public class RegistroControlador implements Observable {
             principal.cerrarVentana(cedula);
             FXMLLoader loader = principal.navegarVentana(TipoPantalla.PACIENTE.getRuta(), TipoPantalla.PACIENTE.getNombre());
             PacienteControlador controlador = loader.getController();
-           // controlador.inicializarObservable(this);
+            controlador.inicializarObservable(this);
         }else {
             principal.getSesion().cerrarSesion();
             principal.cerrarVentana(nombre);
-           // principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
         }
     }
 
@@ -118,7 +117,6 @@ public class RegistroControlador implements Observable {
         }else {
             principal.getSesion().cerrarSesion();
             principal.cerrarVentana(nombre);
-           // principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
         }
     }
 }

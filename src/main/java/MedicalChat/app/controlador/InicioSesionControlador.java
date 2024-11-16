@@ -23,8 +23,6 @@ public class InicioSesionControlador {
     @FXML
     public void ingresar(ActionEvent event) throws Exception {
         if (principal.iniciarSesion(cedula.getText(), contraseña.getText(), principal.getSesion().getTipoRegistro())){
-            principal.mostrarAlerta("Inicio de sesión exitoso.", Alert.AlertType.INFORMATION);
-
             if (principal.getSesion() != null && principal.getSesion().getPaciente() != null) {
                 principal.navegarVentana(TipoPantalla.PACIENTE.getRuta(), TipoPantalla.PACIENTE.getNombre());
             } else {
