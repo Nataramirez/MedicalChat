@@ -24,7 +24,7 @@ public class PrincipalControlador implements ServiciosEmpresa {
 
     public PrincipalControlador() {
         medicalChat = new MedicalChat();
-        sesion = new Sesion();
+        sesion = Sesion.getInstancia();
     }
 
     public static PrincipalControlador getInstancia() {

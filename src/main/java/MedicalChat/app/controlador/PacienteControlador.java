@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class PacienteControlador implements Observable, Initializable {
     private final PrincipalControlador principal;
-    private Observable observable;
+   // private Observable observable;
     @FXML
     public Label nombreUsuario;
 
@@ -22,9 +22,9 @@ public class PacienteControlador implements Observable, Initializable {
         System.out.println(principal.getSesion().getPaciente().getNombre());
     }
 
-    public void inicializarObservable(Observable observable) {
+    /*public void inicializarObservable(Observable observable) {
         this.observable = observable;
-    }
+    }*/
 
     @Override
     public void notificar() {}
@@ -37,8 +37,8 @@ public class PacienteControlador implements Observable, Initializable {
     public void cerrarSesion(ActionEvent actionEvent) {
         principal.getSesion().cerrarSesion();
         FXMLLoader loader = principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
-        InicioControlador controlador = loader.getController();
-        controlador.inicializarObservable(this);
+        //InicioControlador controlador = loader.getController();
+       // controlador.inicializarObservable(this);
     }
 
 
