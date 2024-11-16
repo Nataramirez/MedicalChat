@@ -97,14 +97,13 @@ public class RegistroControlador implements Observable {
     private void validarIngreso(ButtonType respuesta, Paciente paciente) {
         if (respuesta == ButtonType.OK) {
             principal.getSesion().setPaciente(paciente);
-            principal.cerrarVentana(nombre);
+            principal.cerrarVentana(cedula);
             FXMLLoader loader = principal.navegarVentana(TipoPantalla.PACIENTE.getRuta(), TipoPantalla.PACIENTE.getNombre());
             PacienteControlador controlador = loader.getController();
             controlador.inicializarObservable(this);
         }else {
             principal.getSesion().cerrarSesion();
             principal.cerrarVentana(nombre);
-            principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
         }
     }
 
@@ -118,7 +117,6 @@ public class RegistroControlador implements Observable {
         }else {
             principal.getSesion().cerrarSesion();
             principal.cerrarVentana(nombre);
-            principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
         }
     }
 }

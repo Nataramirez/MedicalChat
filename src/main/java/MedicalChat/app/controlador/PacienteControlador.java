@@ -4,7 +4,6 @@ import MedicalChat.app.controlador.observador.Observable;
 import MedicalChat.app.enums.TipoPantalla;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
@@ -36,10 +35,7 @@ public class PacienteControlador implements Observable, Initializable {
 
     public void cerrarSesion(ActionEvent actionEvent) {
         principal.getSesion().cerrarSesion();
-        FXMLLoader loader = principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
-        InicioControlador controlador = loader.getController();
-        controlador.inicializarObservable(this);
+        principal.cerrarVentana(nombreUsuario);
+        principal.navegarVentana(TipoPantalla.INICIO.getRuta(), TipoPantalla.INICIO.getNombre());
     }
-
-
 }
