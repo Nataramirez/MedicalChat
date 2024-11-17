@@ -21,7 +21,7 @@ public class DoctorClient {
 
             if (!respuestaServidor.isBlank()) {
                 while (bandera) {
-                    String mensaje = JOptionPane.showInputDialog(null, "Escribe tu mensaje (escribe 'exit' para salir):");
+                    String mensaje = JOptionPane.showInputDialog(null, "Doctor escribe tu mensaje (escribe 'exit' para salir):");
 
                     if (mensaje == null || mensaje.equalsIgnoreCase("exit")) {
                         medicoOutput.writeUTF("exit");
@@ -31,7 +31,7 @@ public class DoctorClient {
 
                     medicoOutput.writeUTF(mensaje);
                     respuestaServidor = medicoInput.readUTF();
-                    JOptionPane.showMessageDialog(null, "El paciente dice: " + respuestaServidor);
+                    System.out.println("El paciente dice d: " + respuestaServidor);
                 }
             }
 

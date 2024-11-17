@@ -58,18 +58,30 @@ public class MedicoHilo extends Thread {
 
     private void chatWithPatient() {
         try {
-            String message = in.readUTF();
+            String message;
             while (true) {
+                message = in.readUTF();
+                System.out.println("Mensaje recibido del doctor: " + message);
                 if (message.equalsIgnoreCase("exit")) {
-                    System.out.println("El paciente ha salido del chat.");
+                    System.out.println("El doctor ha salido del chat.");
                     break;
                 }
+                System.out.println("Doctor dice: " + message);
                 if (currentPatient != null) {
                     currentPatient.sendMessage("Doctor: " + message);
                 }
             }
+
         } catch (IOException e) {
+            System.err.println("Error en la comunicación con el doctor: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            System.out.println("Cerrando la conexión del doctor...");
+            try {
+                socket.close();
+            } catch (IOException e) {
+                System.err.println("Error al cerrar el socket del paciente: " + e.getMessage());
+            }
         }
     }
 

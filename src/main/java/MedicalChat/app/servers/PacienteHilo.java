@@ -29,13 +29,14 @@ class PacienteHilo extends Thread {
             }
 
             String message;
-            while ((message = in.readUTF()) != null) {
+            while (true) {
+                message = in.readUTF();
                 System.out.println("Mensaje recibido del paciente: " + message);
                 if (message.equalsIgnoreCase("exit")) {
                     System.out.println("El paciente ha salido del chat.");
                     break;
                 }
-                System.out.println("Paciente dice: " + message);
+                System.out.println("Paciente dice dddd: " + message);
                 if (assignedDoctor != null) {
                     assignedDoctor.sendMessage("Paciente: " + message);
                 }
