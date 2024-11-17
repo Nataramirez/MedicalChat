@@ -3,23 +3,47 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MedicalChat.app.controlador.RegistroControlador">
-    <GridPane alignment="CENTER" hgap="10.0" prefHeight="262.0" prefWidth="375.0" vgap="10.0">
-        <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="nombre" minHeight="30.0" minWidth="220" promptText="Ingrese su nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+<VBox prefHeight="533.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MedicalChat.app.controlador.RegistroControlador">
+   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="660.0" text="Registro">
+      <font>
+         <Font size="35.0" />
+      </font>
+      <VBox.margin>
+         <Insets top="10.0" />
+      </VBox.margin>
+   </Label>
+    <GridPane alignment="CENTER" hgap="10.0" prefHeight="344.0" prefWidth="486.0" vgap="10.0">
+        <Label alignment="CENTER" prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="0" GridPane.rowIndex="0">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+        <TextField fx:id="nombre" alignment="CENTER" minHeight="30.0" minWidth="220" promptText="Ingrese su nombre y apellido" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #0F52BA;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
-        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Cédula" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <TextField fx:id="cedula" minHeight="30.0" promptText="Ingrese su cédula" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Cédula" GridPane.columnIndex="0" GridPane.rowIndex="2">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+        <TextField fx:id="cedula" alignment="CENTER" minHeight="30.0" promptText="Ingrese su cédula" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #0F52BA;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
 
-        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Teléfono" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-        <TextField fx:id="telefono" minHeight="30.0" promptText="Ingrese su teléfono" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Teléfono" GridPane.columnIndex="0" GridPane.rowIndex="4">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+        <TextField fx:id="telefono" alignment="CENTER" minHeight="30.0" promptText="Ingrese su teléfono" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #0F52BA;" GridPane.columnIndex="0" GridPane.rowIndex="5" />
 
-        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-        <TextField fx:id="correo" minHeight="30.0" promptText="Ingrese su correo" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="0" GridPane.rowIndex="6">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+        <TextField fx:id="correo" alignment="CENTER" minHeight="30.0" promptText="Ingrese su correo" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #0F52BA;" GridPane.columnIndex="0" GridPane.rowIndex="7" />
 
-        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Contraseña" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-        <TextField fx:id="password" minHeight="30.0" promptText="Ingrese su contraseña" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+        <Label alignment="CENTER" prefHeight="40.0" prefWidth="220.0" text="Contraseña" GridPane.columnIndex="0" GridPane.rowIndex="8">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <PasswordField fx:id="password" alignment="CENTER" promptText="Ingrese su contraseña" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #0F52BA;" GridPane.rowIndex="9" />
       <columnConstraints>
          <ColumnConstraints />
       </columnConstraints>
@@ -27,12 +51,28 @@
       <VBox.margin>
          <Insets top="24.0" />
       </VBox.margin>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
-    <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0">
-        <Button id="btnRegistrar" minHeight="40.0" minWidth="130.0" onAction="#registro" style="-fx-background-color: #101e5a; -fx-text-fill: white" text="Registrarse">
+    <HBox alignment="CENTER" prefHeight="88.0" prefWidth="595.0">
+        <Button id="btnRegistrar" minHeight="35.0" minWidth="118.0" onAction="#registro" prefHeight="35.0" prefWidth="118.0" style="-fx-background-radius: 9; -fx-border-radius: 9; -fx-border-width: 1; -fx-background-color: #101e5a;" text="Registrarse" textFill="WHITE">
             <HBox.margin>
                 <Insets bottom="24.0" top="24.0" />
-            </HBox.margin></Button>
+            </HBox.margin>
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
     </HBox>
 
     <HBox.margin>
