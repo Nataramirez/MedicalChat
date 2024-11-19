@@ -1,5 +1,7 @@
 package MedicalChat.app.servers;
 
+import MedicalChat.app.modelo.Paciente;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -25,7 +27,7 @@ public class ChatServer {
                     connectedDoctors.add(doctor);
                     doctor.start();
                 } else if (clientType.equals("PACIENTE")) {
-                    PacienteHilo patient = new PacienteHilo(socket);
+                    PacienteHilo patient = new PacienteHilo(socket, new Paciente("a", "2", "a", "a", "a"));
                     waitingPatients.add(patient);
                     patient.start();
                 }

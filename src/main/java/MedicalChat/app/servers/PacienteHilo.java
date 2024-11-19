@@ -1,17 +1,21 @@
 package MedicalChat.app.servers;
 
+import MedicalChat.app.modelo.Paciente;
+
 import java.io.*;
 import java.net.Socket;
 
-class PacienteHilo extends Thread {
+public class PacienteHilo extends Thread {
     private final Socket socket;
     private DataOutputStream out;
     private DataInputStream in;
     private boolean isWaiting = true;
     private MedicoHilo assignedDoctor;
+    private final Paciente paciente;
 
-    public PacienteHilo(Socket socket) {
+    public PacienteHilo(Socket socket, Paciente patient) {
         this.socket = socket;
+        this.paciente = patient;
         try {
             out = new DataOutputStream(socket.getOutputStream());
             in = new DataInputStream(socket.getInputStream());
@@ -23,7 +27,7 @@ class PacienteHilo extends Thread {
     public void run() {
         try {
             out.writeUTF("Esperando a un médico para iniciar el chat...");
-            System.out.println("Paciente conectado, esperando a un médico...");
+            System.out.println("Paciente conectado, esperando a un médico..." + paciente.getNombre());
             while (isWaiting) {
                 Thread.sleep(1000);
             }

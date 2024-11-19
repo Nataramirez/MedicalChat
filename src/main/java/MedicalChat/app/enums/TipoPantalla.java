@@ -11,7 +11,8 @@ public enum TipoPantalla {
     PACIENTE("/paciente.fxml", "MedicalChat Paciente"),
     REGISTRO("/registro.fxml", "Registro"),
     INICIO_SESION("/inicioSesion.fxml", "Inicio sesión"),
-    HISTORIA_CLINICA("/historiaClinica.fxml", "Historia Clínica");
+    HISTORIA_CLINICA("/historiaClinica.fxml", "Historia Clínica"),
+    CHAT("/chat.fxml", "Chat");
 
     private String ruta;
     private String nombre;

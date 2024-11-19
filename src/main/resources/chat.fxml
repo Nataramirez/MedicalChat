@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MedicalChat.app.controlador.ChatControlador">
+    <children>
+        <Button fx:id="botonEnviar" layoutX="504" layoutY="338" prefHeight="26.0" prefWidth="66.0" text="Enviar" style="-fx-background-color: #101e5a; -fx-text-fill: white"/>
+        <TextField fx:id="mensaje" layoutX="30" layoutY="338" prefHeight="26" prefWidth="466.0" />
+        <ScrollPane fx:id="contenido" fitToWidth="true" layoutX="30" layoutY="70" prefHeight="256" prefWidth="542.0">
+            <content>
+                <VBox fx:id="cajaMensajes" prefHeight="374.0" prefWidth="527.0" />
+            </content>
+        </ScrollPane>
+        <Label layoutX="30.0" layoutY="26" prefHeight="34.0" prefWidth="542.0" text="Consulta Médica">
+            <font>
+                <Font size="23" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
