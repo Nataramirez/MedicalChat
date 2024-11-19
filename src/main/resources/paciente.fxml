@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -19,8 +20,59 @@
                 <Insets bottom="24.0" right="24.0" top="24.0" />
             </HBox.margin>
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font size="14.0" />
             </font></Button>
     </HBox>
-
+    <HBox>
+        <VBox alignment="CENTER" prefHeight="204.0" prefWidth="192.0" style="-fx-background-color: #cbc6c3">
+            <ImageView>
+                <Image url="@img/business_13558989.png" />
+                <BorderPane.margin>
+                    <Insets bottom="16.0" top="32.0" />
+                </BorderPane.margin>
+                <VBox.margin>
+                    <Insets bottom="8.0" top="16.0" />
+                </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#verHistoriaClinica" prefHeight="32.0" prefWidth="108.0" style="-fx-background-color: #101e5a; -fx-text-fill: white" text="Historia Clínica" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+                </BorderPane.margin>
+                <VBox.margin>
+                    <Insets bottom="16.0" />
+                </VBox.margin>
+            </Button>
+            <VBox.margin>
+                <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+            </VBox.margin>
+         <HBox.margin>
+            <Insets bottom="32.0" left="32.0" right="16.0" top="32.0" />
+         </HBox.margin>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="204.0" prefWidth="192.0" style="-fx-background-color: #cbc6c3">
+            <ImageView fitHeight="132.0" fitWidth="96.0">
+                <Image url="@img/communication_11681751.png" />
+                <BorderPane.margin>
+                    <Insets bottom="16.0" top="32.0" />
+                </BorderPane.margin>
+                <VBox.margin>
+                    <Insets bottom="8.0" left="16.0" right="16.0" top="16.0" />
+                </VBox.margin>
+            </ImageView>
+            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="108.0" style="-fx-background-color: #101e5a; -fx-text-fill: white" text="Iniciar Chat" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+                </BorderPane.margin>
+                <VBox.margin>
+                    <Insets bottom="16.0" />
+                </VBox.margin>
+            </Button>
+            <VBox.margin>
+                <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+            </VBox.margin>
+         <HBox.margin>
+            <Insets bottom="32.0" left="16.0" right="32.0" top="32.0" />
+         </HBox.margin>
+        </VBox>
+    </HBox>
 </VBox>

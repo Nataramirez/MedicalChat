@@ -2,10 +2,7 @@ package MedicalChat.app.controlador;
 
 import MedicalChat.app.enums.TipoPantalla;
 import MedicalChat.app.enums.TipoRegistro;
-import MedicalChat.app.modelo.MedicalChat;
-import MedicalChat.app.modelo.Medico;
-import MedicalChat.app.modelo.Paciente;
-import MedicalChat.app.modelo.Sesion;
+import MedicalChat.app.modelo.*;
 import MedicalChat.app.servicio.ServiciosEmpresa;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -111,5 +108,10 @@ public class PrincipalControlador implements ServiciosEmpresa {
     @Override
     public boolean iniciarSesion(String cedula, String password, TipoRegistro tipo) throws Exception {
         return medicalChat.iniciarSesion(cedula, password, tipo);
+    }
+
+    @Override
+    public HistoriaClinica crearHistoriaClinica(Paciente paciente) throws Exception {
+        return medicalChat.crearHistoriaClinica(paciente);
     }
 }

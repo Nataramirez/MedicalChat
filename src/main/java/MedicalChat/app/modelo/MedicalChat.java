@@ -3,16 +3,19 @@ package MedicalChat.app.modelo;
 import MedicalChat.app.enums.TipoRegistro;
 import MedicalChat.app.servicio.ServiciosEmpresa;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MedicalChat implements ServiciosEmpresa {
     private ArrayList<Paciente> pacientes;
     private ArrayList<Medico> medicos;
+    private ArrayList<HistoriaClinica> historiasClinicas;
     private Sesion sesion;
 
     public MedicalChat() {
         pacientes = new ArrayList<>();
         medicos = new ArrayList<>();
+        historiasClinicas = new ArrayList<>();
         sesion = Sesion.getInstancia();
     }
 
@@ -29,6 +32,8 @@ public class MedicalChat implements ServiciosEmpresa {
         try {
             paciente = new Paciente(nombreCompleto, cedula, numeroTelefono, correoEmail, password);
             pacientes.add(paciente);
+            HistoriaClinica historiaClinica = crearHistoriaClinica(paciente);
+            paciente.setHistoriaClinica(historiaClinica);
         }catch (Exception e){
             throw new Exception("No se puede crear un nuevo paciente");
         }
@@ -98,6 +103,20 @@ public class MedicalChat implements ServiciosEmpresa {
         }
 
         return true;
+    }
+
+    @Override
+    public HistoriaClinica crearHistoriaClinica(Paciente paciente) throws Exception {
+        HistoriaClinica historiaClinica;
+        try {
+            historiaClinica = HistoriaClinica.builder()
+                    .consultas(new ArrayList<>())
+                    .build();
+            return historiaClinica;
+        }catch (Exception e){
+            throw new Exception("No se puede crear un historia de clinica");
+        }
+
     }
 
     private boolean esContrasenaValida(Object usuario, String password) {
