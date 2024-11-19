@@ -38,7 +38,10 @@
                   <PasswordField fx:id="contraseña" alignment="CENTER" prefHeight="29.0" prefWidth="208.0" promptText="Ingresa la contraseña" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #0F52BA;" GridPane.rowIndex="3" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#ingresar" prefHeight="26.0" prefWidth="124.0" style="-fx-background-radius: 9; -fx-border-radius: 9; -fx-border-width: 1; -fx-background-color: #101e5a;" text="Ingresar" textAlignment="CENTER" textFill="WHITE" />
+                        <Button mnemonicParsing="false" onAction="#ingresar" prefHeight="26.0" prefWidth="124.0" style="-fx-background-radius: 9; -fx-border-radius: 9; -fx-border-width: 1; -fx-background-color: #101e5a;" text="Ingresar" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Button>
                      </children>
                   </HBox>
                </children>
