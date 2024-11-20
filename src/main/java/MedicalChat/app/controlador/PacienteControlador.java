@@ -2,10 +2,15 @@ package MedicalChat.app.controlador;
 
 import MedicalChat.app.controlador.observador.Observable;
 import MedicalChat.app.enums.TipoPantalla;
+import MedicalChat.app.servers.clients.PatientClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,7 +47,20 @@ public class PacienteControlador implements Observable, Initializable {
        principal.navegarVentana(TipoPantalla.HISTORIA_CLINICA.getRuta(), TipoPantalla.HISTORIA_CLINICA.getNombre());
     }
 
-    public void iniciarChat(ActionEvent actionEvent) {
+    /*public void iniciarChat(ActionEvent actionEvent) {
         principal.navegarVentana(TipoPantalla.CHAT.getRuta(), TipoPantalla.CHAT.getNombre());
+    }*/
+    public void iniciarChat(ActionEvent actionEvent) {
+        // Mostrar pantalla de confirmación (opcional)
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Iniciar Chat");
+        confirmacion.setHeaderText("¿Quieres iniciar un chat con el doctor?");
+        confirmacion.setContentText("Presiona 'Aceptar' para iniciar el chat.");
+
+        if (confirmacion.showAndWait().get() == ButtonType.OK) {
+            // Iniciar la ventana del chat
+            SwingUtilities.invokeLater(PatientClient::new);
+        }
     }
+
 }

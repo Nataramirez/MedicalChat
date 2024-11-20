@@ -42,7 +42,7 @@ public class DoctorClient extends JFrame {
         c.add(panelInferior, BorderLayout.SOUTH);
 
         this.setSize(500, 500);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cambia esto para que solo se cierre la ventana
         this.setVisible(true);
 
         inicializarConexion();
@@ -118,3 +118,4 @@ public class DoctorClient extends JFrame {
         SwingUtilities.invokeLater(DoctorClient::new);
     }
 }
+
