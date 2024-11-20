@@ -40,7 +40,6 @@ public class PacienteHilo extends Thread {
                     System.out.println("El paciente ha salido del chat.");
                     break;
                 }
-                System.out.println("Paciente dice dddd: " + message);
                 if (assignedDoctor != null) {
                     assignedDoctor.sendMessage("Paciente: " + message);
                 }
@@ -58,7 +57,6 @@ public class PacienteHilo extends Thread {
             }
         }
     }
-
 
     public void startChat() {
         isWaiting = false;
@@ -79,5 +77,9 @@ public class PacienteHilo extends Thread {
 
     public void setDoctor(MedicoHilo doctor) {
         this.assignedDoctor = doctor;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
     }
 }

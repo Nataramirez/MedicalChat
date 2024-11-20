@@ -3,11 +3,13 @@ package MedicalChat.app.servers;
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.util.List;
 
 public class MedicoHilo extends Thread {
     private Socket socket;
-    private DataOutputStream out;
+    private DataOutputStream out; // Deberá ser reemplazado por ObjectOutputStream
     private DataInputStream in;
+    private ObjectOutputStream objectOut; // Usaremos este flujo para enviar objetos
     private PacienteHilo currentPatient;
 
     public MedicoHilo(Socket socket) {
@@ -15,6 +17,7 @@ public class MedicoHilo extends Thread {
         try {
             out = new DataOutputStream(socket.getOutputStream());
             in = new DataInputStream(socket.getInputStream());
+            objectOut = new ObjectOutputStream(socket.getOutputStream()); // Inicializa el ObjectOutputStream
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,5 +90,18 @@ public class MedicoHilo extends Thread {
 
     public void sendMessage(String message) throws IOException {
         out.writeUTF(message);
+    }
+
+    public void setPaciente(PacienteHilo paciente) {
+        this.currentPatient = paciente;
+    }
+
+    public void actualizarListaPacientes(List<String> pacientes) {
+        try {
+            out.writeUTF("UPDATE_PATIENTS");
+            objectOut.writeObject(pacientes); // Ahora usamos el ObjectOutputStream para enviar objetos
+        } catch (IOException e) {
+            System.err.println("Error actualizando lista de pacientes: " + e.getMessage());
+        }
     }
 }
