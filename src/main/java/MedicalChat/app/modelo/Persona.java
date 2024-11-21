@@ -7,6 +7,7 @@ import lombok.*;
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class Persona {
     private String nombre;
     private String cedula;

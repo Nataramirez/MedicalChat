@@ -3,9 +3,12 @@ package MedicalChat.app.modelo;
 import MedicalChat.app.enums.TipoGenero;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class Paciente extends Persona {
+@NoArgsConstructor
+public class Paciente extends Persona implements Serializable {
     private HistoriaClinica historiaClinica;
     private String fechaNacimiento;
     private TipoGenero sexo;
@@ -14,6 +17,8 @@ public class Paciente extends Persona {
     public Paciente(String nombre, String cedula, String telefono, String correo, String contrasena) {
         super(nombre, cedula, telefono, correo, contrasena);
     }
+
+
 
     @Override
     public String toString() {
