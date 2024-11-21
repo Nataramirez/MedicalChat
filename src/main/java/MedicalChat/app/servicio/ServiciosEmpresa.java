@@ -2,9 +2,7 @@ package MedicalChat.app.servicio;
 
 
 import MedicalChat.app.enums.TipoRegistro;
-import MedicalChat.app.modelo.HistoriaClinica;
-import MedicalChat.app.modelo.Medico;
-import MedicalChat.app.modelo.Paciente;
+import MedicalChat.app.modelo.*;
 
 public interface ServiciosEmpresa {
     Paciente agregarPaciente(String nombreCompleto, String cedula, String numeroTelefono, String correoEmail, String password) throws Exception;
@@ -13,4 +11,5 @@ public interface ServiciosEmpresa {
     Medico obtenerMedico(String cedula) throws Exception;
     boolean iniciarSesion(String cedula, String password, TipoRegistro tipo) throws Exception;
     HistoriaClinica crearHistoriaClinica(Paciente paciente) throws Exception;
+    Paciente agregarConsulta(String cedula, RegistroConsultas consulta) throws Exception;
 }

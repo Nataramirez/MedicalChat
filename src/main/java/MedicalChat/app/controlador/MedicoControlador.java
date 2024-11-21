@@ -2,16 +2,15 @@ package MedicalChat.app.controlador;
 
 import MedicalChat.app.controlador.observador.Observable;
 import MedicalChat.app.enums.TipoPantalla;
+import MedicalChat.app.modelo.Paciente;
+import MedicalChat.app.modelo.RegistroConsultas;
 import MedicalChat.app.servers.ChatServer;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -21,6 +20,17 @@ import java.util.ResourceBundle;
 
 public class MedicoControlador implements Observable, Initializable {
     private final PrincipalControlador principal;
+    @FXML
+    public TextField paciente;
+    public TextField nombre;
+    public TextField identificacion;
+    public TextField fechaNacimiento;
+    public TextField sexo;
+    public TextField telefono;
+    public TextField correo;
+    public TextField direccion;
+    public TextArea motivo;
+    public TextField diagnostico;
     private Observable observable;
 
     @FXML
@@ -31,6 +41,7 @@ public class MedicoControlador implements Observable, Initializable {
     private TextField mensaje;
     @FXML
     public Button botonEnviar;
+    private Paciente pacienteEncontrado;
 
     private Socket socket;
     private DataOutputStream salida;
@@ -121,5 +132,56 @@ public class MedicoControlador implements Observable, Initializable {
             JOptionPane.showMessageDialog(null, "Error al conectar con el servidor: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             conectado = false;
         }
+    }
+
+    public void buscarPaciente() {
+        if(!paciente.getText().isEmpty() || !mensaje.getText().isBlank()){
+            try {
+                pacienteEncontrado = principal.obtenerPaciente(paciente.getText());
+                if(pacienteEncontrado != null){
+                    System.out.println(pacienteEncontrado);
+                    mostrarPacienteEncontrado();
+                }else {
+                    principal.mostrarAlerta("No se encontró paciente", Alert.AlertType.WARNING);
+                }
+            } catch (Exception e) {
+                principal.mostrarAlerta("No se puedo buscar Paciente", Alert.AlertType.ERROR);
+            }
+
+        }
+    }
+
+    public void agregarConsulta(ActionEvent actionEvent) {
+        RegistroConsultas nuevaConsulta;
+        try {
+            nuevaConsulta = RegistroConsultas.builder()
+                    .diagnostico(diagnostico.getText())
+                    .motivoConsulta(motivo.getText())
+                    .build();
+            principal.agregarConsulta(pacienteEncontrado.getCedula(), nuevaConsulta);
+            principal.mostrarAlerta("Consulta agregada correctamente", Alert.AlertType.INFORMATION);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void mostrarPacienteEncontrado(){
+        nombre.setText(pacienteEncontrado.getNombre());
+        identificacion.setText(pacienteEncontrado.getCedula());
+        telefono.setText(pacienteEncontrado.getTelefono());
+        correo.setText(pacienteEncontrado.getCorreo());
+        if(pacienteEncontrado.getFechaNacimiento() == null){
+            fechaNacimiento.setText("Sin diligenciar");
+        }
+
+        if(pacienteEncontrado.getSexo() == null){
+            sexo.setText("Sin diligenciar");
+        }
+
+        if(pacienteEncontrado.getDireccion() == null){
+            direccion.setText("Sin diligenciar");
+        }
+
+
     }
 }

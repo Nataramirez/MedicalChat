@@ -126,6 +126,18 @@ public class MedicalChat implements ServiciosEmpresa {
 
     }
 
+    @Override
+    public Paciente agregarConsulta(String cedula, RegistroConsultas consulta) throws Exception {
+        Paciente paciente = obtenerPaciente(cedula);
+        for (Paciente pacienteGuardado: pacientes){
+            if (pacienteGuardado.getCedula().equals(paciente.getCedula())) {
+                pacienteGuardado.getHistoriaClinica().getConsultas().add(consulta);
+            }
+        }
+        guardarDatos();
+        return paciente;
+    }
+
     private boolean esContrasenaValida(Object usuario, String password) {
         if (usuario instanceof Medico) {
             return ((Medico) usuario).getContrasena().equals(password);
