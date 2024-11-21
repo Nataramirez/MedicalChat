@@ -49,7 +49,7 @@ public class ChatControlador implements Initializable {
             entrada = new DataInputStream(socket.getInputStream());
 
             // Identificación del cliente como "PACIENTE"
-            salida.writeUTF("PACIENTE");
+            salida.writeUTF("PACIENTE," + principal.getSesion().getPaciente().getCedula());
 
             String bienvenida = entrada.readUTF();
 

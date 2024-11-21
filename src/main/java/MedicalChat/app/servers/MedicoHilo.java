@@ -1,9 +1,14 @@
 package MedicalChat.app.servers;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 
+@Getter
+@Setter
 public class MedicoHilo extends Thread {
     private Socket socket;
     private DataOutputStream out;
@@ -33,7 +38,7 @@ public class MedicoHilo extends Thread {
                     if ("ACEPTAR".equalsIgnoreCase(mensaje)) {
                         PacienteHilo patient = ChatServer.assignPatientToDoctor(this);
                         if (patient != null) {
-                            out.writeUTF("Chat iniciado con un paciente.");
+                            out.writeUTF("Chat iniciado con un paciente." + patient.getCedula());
                             currentPatient = patient;
                             patient.setDoctor(this);
                             patient.startChat();
@@ -62,15 +67,15 @@ public class MedicoHilo extends Thread {
             String message;
             while (true) {
                 message = in.readUTF();
-                System.out.println("Mensaje recibido del doctor: " + message);
-                if (message.equalsIgnoreCase("exit")) {
-                    System.out.println("El doctor ha salido del chat.");
-                    break;
-                }
-                System.out.println("Doctor dice: " + message);
-                if (currentPatient != null) {
-                    currentPatient.sendMessage("Doctor: " + message);
-                }
+                    System.out.println("Mensaje recibido del doctor: " + message);
+                    if (message.equalsIgnoreCase("exit")) {
+                        System.out.println("El doctor ha salido del chat.");
+                        break;
+                    }
+                    System.out.println("Doctor dice: " + message);
+                    if (currentPatient != null) {
+                        currentPatient.sendMessage(message);
+                    }
             }
 
         } catch (IOException e) {

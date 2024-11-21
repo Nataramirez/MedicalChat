@@ -49,7 +49,6 @@ public class ChatDoctorControlador implements Initializable {
             // Identificación del cliente como "PACIENTE"
             salida.writeUTF("DOCTOR");
             String bienvenida = entrada.readUTF();
-
             mensajesChat.appendText("Servidor: " + bienvenida + "\n");
 
         } catch (IOException e) {
