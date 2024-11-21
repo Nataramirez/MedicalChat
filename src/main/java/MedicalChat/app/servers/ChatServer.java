@@ -1,6 +1,7 @@
 package MedicalChat.app.servers;
 
 import MedicalChat.app.modelo.Paciente;
+import lombok.Getter;
 
 import java.io.*;
 import java.net.*;
@@ -8,7 +9,9 @@ import java.util.*;
 
 public class ChatServer {
     private static final int PORT = 8080;
+    @Getter
     static List<PacienteHilo> waitingPatients = new ArrayList<>();
+    @Getter
     private static List<MedicoHilo> connectedDoctors = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -43,4 +46,5 @@ public class ChatServer {
         }
         return null;
     }
+
 }

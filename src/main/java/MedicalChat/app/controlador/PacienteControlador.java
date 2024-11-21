@@ -2,7 +2,6 @@ package MedicalChat.app.controlador;
 
 import MedicalChat.app.controlador.observador.Observable;
 import MedicalChat.app.enums.TipoPantalla;
-import MedicalChat.app.servers.clients.PatientClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,7 +28,8 @@ public class PacienteControlador implements Observable, Initializable {
     }
 
     @Override
-    public void notificar() {}
+    public void notificar() {
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,7 +43,7 @@ public class PacienteControlador implements Observable, Initializable {
     }
 
     public void verHistoriaClinica() {
-       principal.navegarVentana(TipoPantalla.HISTORIA_CLINICA.getRuta(), TipoPantalla.HISTORIA_CLINICA.getNombre());
+        principal.navegarVentana(TipoPantalla.HISTORIA_CLINICA.getRuta(), TipoPantalla.HISTORIA_CLINICA.getNombre());
     }
 
     /*public void iniciarChat(ActionEvent actionEvent) {
@@ -58,8 +57,7 @@ public class PacienteControlador implements Observable, Initializable {
         confirmacion.setContentText("Presiona 'Aceptar' para iniciar el chat.");
 
         if (confirmacion.showAndWait().get() == ButtonType.OK) {
-            // Iniciar la ventana del chat
-            SwingUtilities.invokeLater(PatientClient::new);
+            principal.navegarVentana(TipoPantalla.CHAT.getRuta(), TipoPantalla.CHAT.getNombre());
         }
     }
 

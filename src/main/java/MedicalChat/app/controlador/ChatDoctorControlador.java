@@ -1,6 +1,5 @@
 package MedicalChat.app.controlador;
 
-import MedicalChat.app.servers.PacienteHilo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -18,7 +16,7 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChatControlador implements Initializable {
+public class ChatDoctorControlador implements Initializable {
     private PrincipalControlador principal;
     @FXML
     public Button botonEnviar;
@@ -49,8 +47,7 @@ public class ChatControlador implements Initializable {
             entrada = new DataInputStream(socket.getInputStream());
 
             // Identificación del cliente como "PACIENTE"
-            salida.writeUTF("PACIENTE");
-
+            salida.writeUTF("DOCTOR");
             String bienvenida = entrada.readUTF();
 
             mensajesChat.appendText("Servidor: " + bienvenida + "\n");
@@ -68,7 +65,7 @@ public class ChatControlador implements Initializable {
             try {
                 salida.writeUTF(mensajeEnviar);
                 mensajesChat.appendText("Tú: " + mensajeEnviar + "\n");
-                mensaje.setText("");
+                mensaje.clear();
             } catch (IOException e) {
                 mensajesChat.appendText("Error al enviar el mensaje: " + e.getMessage() + "\n");
                 conectado = false;
@@ -80,7 +77,7 @@ public class ChatControlador implements Initializable {
         try {
             while (conectado) {
                 String mensaje = entrada.readUTF();
-                mensajesChat.appendText("Doctor: " + mensaje + "\n");
+                mensajesChat.appendText("Paciente: " + mensaje + "\n");
             }
         } catch (IOException e) {
             mensajesChat.appendText("Conexión cerrada: " + e.getMessage() + "\n");

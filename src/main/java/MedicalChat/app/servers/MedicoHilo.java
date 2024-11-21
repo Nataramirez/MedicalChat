@@ -25,6 +25,7 @@ public class MedicoHilo extends Thread {
             System.out.println("Bienvenido, Doctor. Esperando por pacientes...");
             while (true) {
                 if (!ChatServer.waitingPatients.isEmpty()) {
+                    System.out.println(ChatServer.getWaitingPatients());
                     String mensaje = JOptionPane.showInputDialog(null,
                             "Hay " + ChatServer.waitingPatients.size() + " pacientes en espera. Escribe " +
                                     "'ACEPTAR' para tomar el primer paciente en la lista.");
