@@ -114,4 +114,9 @@ public class PrincipalControlador implements ServiciosEmpresa {
     public HistoriaClinica crearHistoriaClinica(Paciente paciente) throws Exception {
         return medicalChat.crearHistoriaClinica(paciente);
     }
+
+    @Override
+    public Paciente agregarConsulta(String cedula, RegistroConsultas consulta) throws Exception {
+        return medicalChat.agregarConsulta(cedula, consulta);
+    }
 }

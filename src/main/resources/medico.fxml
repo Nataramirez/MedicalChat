@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="591.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MedicalChat.app.controlador.MedicoControlador">
+<VBox prefHeight="591.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MedicalChat.app.controlador.MedicoControlador">
     <HBox alignment="CENTER_RIGHT" prefWidth="860.0" style="-fx-background-color: #101e5a; -fx-min-height: 96.0">
         <Label fx:id="nombreUsuario" textFill="#f7f8f9">
          <HBox.margin>
@@ -27,6 +27,117 @@
          </font>
       </Button>
     </HBox>
-    <fx:include source="chatDoctor.fxml"/>
+    <HBox>
+        <fx:include source="chatDoctor.fxml" />
+        <VBox prefHeight="400.0" prefWidth="453.0">
+            <GridPane alignment="CENTER" hgap="10.0" prefHeight="344.0" prefWidth="420.0" vgap="10.0">
+                <Label alignment="CENTER" prefHeight="32.0" prefWidth="220.0" text="Buscar Paciente" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <font>
+                        <Font size="13.0" />
+                    </font></Label>
+                <TextField fx:id="paciente" alignment="CENTER" minHeight="32.0" minWidth="220.0" promptText="Ingrese numero de cédula" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #0F52BA;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Button id="btnRegistrar" minHeight="32.0" minWidth="96.0" onAction="#buscarPaciente" prefHeight="35.0" prefWidth="118.0" style="-fx-background-radius: 9; -fx-border-radius: 9; -fx-border-width: 1; -fx-background-color: #101e5a;" text="Buscar" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <HBox.margin>
+                        <Insets bottom="24.0" top="24.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font></Button>
+
+                <VBox.margin>
+                    <Insets top="24.0" />
+                </VBox.margin>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                    <RowConstraints />
+                </rowConstraints>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            </GridPane>
+
+            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="16.0">
+                <Label contentDisplay="CENTER">HISTORIA CLÍNICA</Label>
+                <Label prefHeight="18.0" prefWidth="541.0">Infomación Básica</Label>
+                <GridPane maxWidth="-Infinity" prefHeight="45.0" prefWidth="480.0">
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="nombre" disable="true" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Identificación" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="identificacion" disable="true" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Fecha de Nacimiento" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <TextField fx:id="fechaNacimiento" disable="true" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Sexo" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    <TextField fx:id="sexo" disable="true" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+
+                <Label prefHeight="18.0" prefWidth="541.0">Infomación de Contacto</Label>
+                <GridPane maxWidth="-Infinity" prefHeight="45.0" prefWidth="480.0">
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Teléfono" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="telefono" disable="true" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="correo" disable="true" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Dirección" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <TextField fx:id="direccion" disable="true" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+
+                <Label prefHeight="18.0" prefWidth="541.0">Consulta Actual</Label>
+
+                <GridPane maxWidth="-Infinity" prefHeight="87.0" prefWidth="371.0">
+                    <Label prefHeight="18.0" prefWidth="173.0" text="Motivo consulta" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextArea fx:id="motivo" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="210.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Label prefHeight="18.0" prefWidth="220.0" text="Diagnóstico" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="diagnostico" minHeight="30.0" minWidth="141.0" prefHeight="125.0" prefWidth="206.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints maxWidth="187.0" minWidth="166.0" prefWidth="170.0" />
+                  <ColumnConstraints maxWidth="204.39999999999998" minWidth="183.39999999999998" prefWidth="200.39999999999998" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+
+                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="108.0" style="-fx-background-color: #101e5a; -fx-text-fill: white" text="Agregar consulta" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+                    </BorderPane.margin>
+                    <VBox.margin>
+                        <Insets bottom="16.0" />
+                    </VBox.margin>
+                </Button>
+            <VBox.margin>
+               <Insets top="24.0" />
+            </VBox.margin>
+
+            </VBox>
+        </VBox>
+    </HBox>
 
 </VBox>
