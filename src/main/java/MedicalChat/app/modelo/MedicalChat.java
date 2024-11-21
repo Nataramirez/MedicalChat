@@ -2,21 +2,26 @@ package MedicalChat.app.modelo;
 
 import MedicalChat.app.enums.TipoRegistro;
 import MedicalChat.app.servicio.ServiciosEmpresa;
+import MedicalChat.app.utils.Persistencia;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MedicalChat implements ServiciosEmpresa {
-    private ArrayList<Paciente> pacientes;
-    private ArrayList<Medico> medicos;
-    private ArrayList<HistoriaClinica> historiasClinicas;
+    private ArrayList<Paciente> pacientes  = new ArrayList<>();;
+    private ArrayList<Medico> medicos = new ArrayList<>();
+    private ArrayList<HistoriaClinica> historiasClinicas  = new ArrayList<>();;
     private Sesion sesion;
+    private Persistencia persistencia = new Persistencia();
 
     public MedicalChat() {
-        pacientes = new ArrayList<>();
-        medicos = new ArrayList<>();
-        historiasClinicas = new ArrayList<>();
-        sesion = Sesion.getInstancia();
+        try {
+            sesion = Sesion.getInstancia();
+            cargarDatos();
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     @Override
@@ -34,6 +39,7 @@ public class MedicalChat implements ServiciosEmpresa {
             pacientes.add(paciente);
             HistoriaClinica historiaClinica = crearHistoriaClinica(paciente);
             paciente.setHistoriaClinica(historiaClinica);
+            guardarDatos();
         }catch (Exception e){
             throw new Exception("No se puede crear un nuevo paciente");
         }
@@ -67,6 +73,7 @@ public class MedicalChat implements ServiciosEmpresa {
         try {
             medico = new Medico(nombreCompleto, cedula, numeroTelefono, correoEmail, password);
             medicos.add(medico);
+            guardarDatos();
         }catch (Exception e){
             throw new Exception("No se puede crear un nuevo paciente");
         }
@@ -112,7 +119,7 @@ public class MedicalChat implements ServiciosEmpresa {
             historiaClinica = HistoriaClinica.builder()
                     .consultas(new ArrayList<>())
                     .build();
-            return historiaClinica;
+            guardarDatos();            return historiaClinica;
         }catch (Exception e){
             throw new Exception("No se puede crear un historia de clinica");
         }
@@ -143,6 +150,38 @@ public class MedicalChat implements ServiciosEmpresa {
 
         if(password.isEmpty() || password.isBlank()){
             throw new Exception("La contraseña es obligatoria");
+        }
+    }
+
+    public void cargarDatos() {
+        try {
+            ArrayList<Paciente> pacientesCargados = (ArrayList<Paciente>) persistencia.deserializarObjetoXML("pacientes.xml");
+            ArrayList<Medico> medicosCargados = (ArrayList<Medico>) persistencia.deserializarObjetoXML("medicos.xml");
+            ArrayList<HistoriaClinica> historiasCargadas = (ArrayList<HistoriaClinica>) persistencia.deserializarObjetoXML("historias.xml");
+
+            if (pacientesCargados != null) {
+                pacientes.addAll(pacientesCargados);
+            }
+
+            if (medicosCargados != null) {
+                medicos.addAll(medicosCargados);
+            }
+
+            if (historiasCargadas != null) {
+                historiasClinicas.addAll(historiasCargadas);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+        public void guardarDatos() throws Exception {
+        try {
+            persistencia.serializarObjeto("pacientes.xml",pacientes);
+            persistencia.serializarObjeto("historias.xml",historiasClinicas);
+            persistencia.serializarObjeto("medicos.xml",medicos);
+        } catch (IOException e) {
+            throw new Exception(e);
         }
     }
 }

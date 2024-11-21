@@ -3,18 +3,16 @@ package MedicalChat.app.modelo;
 import MedicalChat.app.enums.TipoAntecedentes;
 import MedicalChat.app.enums.TipoGenero;
 import MedicalChat.app.enums.TipoHabitos;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @Getter
 @Setter
 @Builder
-public class HistoriaClinica {
+public class HistoriaClinica implements Serializable {
     private TipoAntecedentes[] antecedentes;
     private TipoHabitos[] habitos;
     private ArrayList<RegistroConsultas> consultas;
