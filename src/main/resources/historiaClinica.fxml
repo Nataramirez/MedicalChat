@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="16.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MedicalChat.app.controlador.HistoriaClinicaControlador">
+    <Label contentDisplay="CENTER">HISTORIA CLÍNICA</Label>
+    <Label prefHeight="18.0" prefWidth="541.0">Infomación Básica</Label>
+    <GridPane maxWidth="-Infinity" prefHeight="45.0" prefWidth="480.0">
+        <Label prefHeight="18.0" prefWidth="220.0" text="Nombre y apellido" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField disable="true" fx:id="nombre" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Label prefHeight="18.0" prefWidth="220.0" text="Identificación" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField disable="true" fx:id="identificacion" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Label prefHeight="18.0" prefWidth="220.0" text="Fecha de Nacimiento" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField disable="true" fx:id="fechaNacimiento" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Label prefHeight="18.0" prefWidth="220.0" text="Sexo" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField disable="true" fx:id="sexo" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <columnConstraints>
+            <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
+
+    <Label prefHeight="18.0" prefWidth="541.0">Infomación de Contacto</Label>
+    <GridPane maxWidth="-Infinity" prefHeight="45.0" prefWidth="480.0">
+        <Label prefHeight="18.0" prefWidth="220.0" text="Teléfono" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField disable="true" fx:id="telefono" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Label prefHeight="18.0" prefWidth="220.0" text="Correo electrónico" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField disable="true" fx:id="correo" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Label prefHeight="18.0" prefWidth="220.0" text="Dirección" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField disable="true" fx:id="direccion" minHeight="30.0" minWidth="141.0" prefHeight="30.0" prefWidth="260.0" promptText="Sin diligenciar" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
+
+    <Label prefHeight="18.0" prefWidth="541.0">Histórico consultas</Label>
+
+    <Button mnemonicParsing="false" onAction="#descargar" prefHeight="32.0" prefWidth="108.0" style="-fx-background-color: #101e5a; -fx-text-fill: white" text="Descargar" BorderPane.alignment="CENTER">
+        <BorderPane.margin>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+        </BorderPane.margin>
+        <VBox.margin>
+            <Insets bottom="16.0" />
+        </VBox.margin>
+    </Button>
+
+</VBox>

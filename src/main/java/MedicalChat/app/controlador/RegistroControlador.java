@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class RegistroControlador implements Observable {
@@ -23,7 +24,7 @@ public class RegistroControlador implements Observable {
     @FXML
     public TextField correo;
     @FXML
-    public TextField password;
+    public PasswordField password;
 
     public RegistroControlador() {
         principal = PrincipalControlador.getInstancia();

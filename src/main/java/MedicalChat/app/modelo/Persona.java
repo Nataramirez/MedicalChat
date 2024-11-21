@@ -2,10 +2,11 @@ package MedicalChat.app.modelo;
 
 import lombok.*;
 
-@AllArgsConstructor
+
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class Persona {
     private String nombre;
     private String cedula;
